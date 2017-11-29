@@ -1,0 +1,27 @@
+.nav__row {
+  width: 100%;
+  max-width: 90rem;
+  margin: 0 auto;
+  & .nav__link-container {
+    margin-left: auto;
+  }
+}
+
+.nav__icon-container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
+  & .nav__logo {
+    width: 2.5rem;
+    display: inline-block;
+    margin: 0 auto;
+  }
+  & .nav__logo-text {
+    line-height: 1.15;
+    margin-bottom: 0.2rem;
+  }
+}
