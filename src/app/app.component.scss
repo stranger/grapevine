@@ -9,10 +9,7 @@
   max-width: 100%;
 }
 
-.main-container {
-  max-width: 100%;
+.main {
+  position: relative;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

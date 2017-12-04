@@ -1,1 +1,6 @@
-@import 'scss/section-introduction';
+@import 'scss/base';
+
+:host {
+    height: 100%;
+    width: 100%;
+}
