@@ -17,7 +17,14 @@
     ]
   },
   "paths": {
-    "@app/*": ["app/*"],
-    "@shared/*": ["app/shared/*"]
+    "@app/*": [
+      "app/*"
+    ],
+    "@shared/*": [
+      "app/shared/*"
+    ],
+    "@src/*": [
+      "src/*"
+    ]
   }
 }
