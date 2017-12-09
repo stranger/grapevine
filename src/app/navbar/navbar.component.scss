@@ -1,17 +1,12 @@
 .nav__row {
-  width: 100%;
-  max-width: 90rem;
   margin: 0 auto;
+  max-width: 80rem;
   & .nav__link-container {
     margin-left: auto;
   }
 }
 
 .nav__icon-container {
-  display: flex;
-  flex-direction: column;
-  width: auto;
-  text-align: center;
   &:hover {
     cursor: pointer;
   }
