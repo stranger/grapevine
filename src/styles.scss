@@ -3,17 +3,16 @@
 @import '~@angular/material/theming';
 @include mat-core();
 @import './themes/grape-theme';
-
 .grape-theme {
-    @include angular-material-theme($grape-theme);
+  @include angular-material-theme($grape-theme);
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 a,
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
