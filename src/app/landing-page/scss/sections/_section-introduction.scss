@@ -26,12 +26,19 @@
       line-height: 56px;
       font-size: 48px;
       font-weight: 500;
-      color: #190e29;
+      color: $brand--color;
     }
     & .intro__description {
-      opacity: .54;
       font-size: 28px;
       line-height: 33px;
+      & .intro__desc--opacity {
+        opacity: .54;
+      }
+      & .intro__title--color {
+        opacity: .87;
+        color: $brand--color;
+        font-weight: 500;
+      }
     }
   }
 }

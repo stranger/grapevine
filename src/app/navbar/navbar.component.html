@@ -1,14 +1,14 @@
 <mat-toolbar color="primary" class="nav__container">
   <mat-toolbar-row class="nav__row">
     <div routerLink="/home" class="nav__icon-container">
-      <h1 class="nav__logo-text ">Grapevines</h1>
+      <h1 class="nav__logo-text" routerLink="/home">Grapevines</h1>
     </div>
 
     <div class="nav__link-container">
       <button mat-button routerLink="/faq">FAQ</button>
       <button mat-button routerLink="/pricing">Pricing</button>
       <button mat-button routerLink="/join">Join a cluster</button>
-      <button routerLink="/create" mat-raised-button color="accent">Create your grapevine</button>
+      <button mat-raised-button color="accent" routerLink="/create">Create your grapevine</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

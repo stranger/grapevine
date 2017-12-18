@@ -4,26 +4,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppComponent } from './app.component';
+
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core';
 import { NavbarModule } from './navbar/navbar.module';
 import { LandingPageModule } from './landing-page/landing-page.module';
 
-import { AppComponent } from './app.component';
 
-import 'hammerjs';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    CoreModule,
     LandingPageModule,
-    NavbarModule
+    NavbarModule,
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
