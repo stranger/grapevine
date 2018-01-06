@@ -1,1 +1,13 @@
+<form class="reg__form-group" [formGroup]="registerForm">
 
+  <mat-form-field color="accent" class="reg__field">
+    <input matInput placeholder="Email" formControlName="email">
+    <mat-hint>We'll send you a confirmation email</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field color="accent" class="reg__field">
+    <input matInput type="password" placeholder="Password" formControlName="password">
+  </mat-form-field>
+
+  <button mat-raised-button type="button" color="accent" class="reg__submit-button">Create</button>
+</form>

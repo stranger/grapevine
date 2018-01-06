@@ -1,6 +1,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": [
+        "app/*"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -14,17 +23,6 @@
     "lib": [
       "es2017",
       "dom"
-    ]
-  },
-  "paths": {
-    "@app/*": [
-      "app/*"
-    ],
-    "@shared/*": [
-      "app/shared/*"
-    ],
-    "@src/*": [
-      "src/*"
     ]
   }
 }

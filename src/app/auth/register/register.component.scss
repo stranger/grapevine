@@ -6,3 +6,14 @@
   height: 100%;
   background-color: mat-color($primary);
 }
+
+.reg__form-group {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 20rem;
+  & .reg__field {
+    width: 100%;
+  }
+  & .reg__submit-button {}
+}
