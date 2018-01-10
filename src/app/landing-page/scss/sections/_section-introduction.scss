@@ -10,8 +10,9 @@
   display: flex;
   flex-direction: row;
   height: 100%;
-  width: 75rem;
+  width: 70rem;
   & .intro__feedback-cluster {
+    margin-left: 1rem;
     & .intro__cluster {
       height: 28em;
     }
