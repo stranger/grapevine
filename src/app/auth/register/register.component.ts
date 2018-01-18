@@ -53,8 +53,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     if (this.registerForm.controls['password'].hasError('required')) {
       return 'A password is required';
     } else if (this.registerForm.controls['password'].hasError('minlength')) {
-      return 'Your password has to be at least 6 characters';
+      return 'Your password has to be at least 6 characters long';
     }
   }
-
 }
