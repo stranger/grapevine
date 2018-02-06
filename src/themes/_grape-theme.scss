@@ -1,5 +1,9 @@
+@import "~@angular/material/theming";
+
 // default, lighter, and darker
 $primary: mat-palette($mat-grey, 100);
 $accent: mat-palette($mat-deep-purple, 300, 100, 500);
 $warn: mat-palette($mat-red);
 $grape-theme: mat-light-theme($primary, $accent, $warn);
+
+$brand--color: #170024;

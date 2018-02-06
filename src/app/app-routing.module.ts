@@ -1,31 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule, Routes } from "@angular/router";
+import { LandingPageComponent } from "@core/containers";
 
 const routes: Routes = [
-    {
-        path: 'home',
-        redirectTo: '',
-        pathMatch: 'full'
-    },
-    {
-        path: 'create',
-        loadChildren: 'app/auth/register/register.module#RegisterModule'
-    },
-    {
-        path: '',
-        component: LandingPageComponent
-    },
+  {
+    path: "",
+    component: LandingPageComponent
+  },
+  {
+    path: "create",
+    loadChildren: "./auth/containers/register/register.module#RegisterModule"
+  }
 ];
-
 @NgModule({
-    imports: [
-        RouterModule.forRoot(routes)
-    ],
-    exports: [
-        RouterModule
-    ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
