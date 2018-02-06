@@ -1,0 +1,15 @@
+@import "./theming";
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+header {
+  display: block;
+  height: 4rem;
+}
+
+main {
+  height: calc(100% - 4rem);
+}

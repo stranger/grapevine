@@ -1,0 +1,38 @@
+@import "./theming";
+
+section {
+  display: flex;
+  flex-direction: row;
+  width: 70rem;
+}
+
+.feedback-cluster {
+  margin-left: 1rem;
+  & .cluster {
+    width: 27em;
+  }
+}
+
+.text-intro {
+  width: 38rem;
+  margin: 5rem 0 0 auto;
+  & .headline {
+    opacity: 0.87;
+    line-height: 56px;
+    font-size: 48px;
+    font-weight: 500;
+    color: $brand--color;
+  }
+  & .desc {
+    font-size: 28px;
+    line-height: 33px;
+    & .desc--logo {
+      opacity: 0.87;
+      color: $brand--color;
+      font-weight: 500;
+    }
+    & .desc--opacity {
+      opacity: 0.54;
+    }
+  }
+}

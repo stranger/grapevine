@@ -1,0 +1,14 @@
+@import "./theming";
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+app-section-intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50rem;
+  background-color: mat-color($primary);
+}

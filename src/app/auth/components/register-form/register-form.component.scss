@@ -1,0 +1,27 @@
+@import "theming";
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 20rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit-button {
+  margin-top: 0.5rem;
+}
+
+.join-link {
+  text-align: center;
+  color: mat-color($accent, darker);
+  opacity: 0.87;
+  cursor: pointer;
+  margin-top: 1rem;
+  &-link--opacity {
+    opacity: 0.3;
+  }
+}

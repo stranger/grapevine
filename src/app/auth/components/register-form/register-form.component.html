@@ -1,0 +1,17 @@
+<form class="form-container" [formGroup]="registerForm">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Email" formControlName="email">
+    <mat-hint *ngIf="registerForm.controls['email'].valid">We'll send you a confirmation email</mat-hint>
+    <mat-error *ngIf="!registerForm.controls['email'].valid">{{ getEmailError() }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput type="password" placeholder="Password" formControlName="password">
+    <mat-error *ngIf="!registerForm.controls['password'].valid">{{ getPasswordError() }}</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" color="accent" class="submit-button" [disabled]="!registerForm.valid">Continue</button>
+</form>
+
+
+<p routerLink="/join" color="accent" class="join-link" [class.join-link--opacity]="registerForm.dirty">If you have a code, click here to join instead</p>

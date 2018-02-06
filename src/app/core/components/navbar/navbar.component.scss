@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  height: 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+mat-toolbar-row {
+  max-width: 80rem;
+}
+
+nav {
+  margin-left: auto;
+}
+
+figure {
+  &:hover {
+    cursor: pointer;
+  }
+  & .logo {
+    display: block;
+    width: 2.5rem;
+    margin: 0 auto;
+  }
+  & figcaption {
+    line-height: 1.15;
+    margin-bottom: 0.2rem;
+  }
+}
