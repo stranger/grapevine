@@ -4,11 +4,21 @@ form {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 20rem;
+  width: 50rem;
 }
 
 mat-form-field {
-  width: 100%;
+  width: 15rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  & mat-form-field:first-of-type {
+    margin-right: 3rem;
+  }
 }
 
 .submit-button {
@@ -21,6 +31,7 @@ mat-form-field {
   opacity: 0.87;
   cursor: pointer;
   margin-top: 1rem;
+
   &-link--opacity {
     opacity: 0.3;
   }

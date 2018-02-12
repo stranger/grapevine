@@ -1,11 +1,28 @@
-<header>
-  <app-navbar></app-navbar>
-</header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [opened]="showSidenav$ | async" position="end" (closed)="closeSidenav()">
+    <button mat-button class="close-button mat" (click)="sidenav.toggle()">
+      <mat-icon color='accent'>close</mat-icon>
+    </button>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+    <nav>
+      <button (click)="sidenav.toggle()" mat-button routerLink="/faq">FAQ</button>
+      <button (click)="sidenav.toggle()" mat-button routerLink="/pricing">Pricing</button>
+      <button (click)="sidenav.toggle()" mat-button routerLink="/join">Join a cluster</button>
+      <button (click)="sidenav.toggle()" mat-raised-button color="accent" routerLink="/create">Create your grapevine</button>
+    </nav>
+  </mat-sidenav>
 
-<footer>
+  <mat-sidenav-content>
+    <header>
+      <app-navbar (openSidenav)="openSidenav()"></app-navbar>
+    </header>
 
-</footer>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer>
+
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
