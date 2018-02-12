@@ -16,6 +16,7 @@
     "eofline": false,
     "no-trailing-whitespace": false,
     "object-literal-key-quotes": false,
-    "semicolon": false
+    "semicolon": false,
+    "quotemark": false
   }
 }
