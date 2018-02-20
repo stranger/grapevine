@@ -15,7 +15,7 @@ export function reducer(
   action: LayoutActions
 ): State {
   switch (action.type) {
-    case LayoutActionTypes.windowSize: {
+    case LayoutActionTypes.WindowSize: {
       const windowSize = action.payload;
       return {
         ...state,
@@ -23,22 +23,24 @@ export function reducer(
       };
     }
 
-    case LayoutActionTypes.openSidenav: {
+    case LayoutActionTypes.OpenSidenav: {
       return {
         ...state,
         showSidenav: true
       };
     }
 
-    case LayoutActionTypes.closeSidenav: {
+    case LayoutActionTypes.CloseSidenav: {
       return {
         ...state,
         showSidenav: false
       };
     }
-  }
 
-  return state;
+    default: {
+      return state;
+    }
+  }
 }
 
 export const getWindowSize = (state: State) => state.windowSize;

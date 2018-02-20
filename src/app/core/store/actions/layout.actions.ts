@@ -1,22 +1,22 @@
 import { Action } from "@ngrx/store";
 
 export enum LayoutActionTypes {
-  windowSize = "[Layout] Window resize",
-  openSidenav = "[Layout] Open sidenav",
-  closeSidenav = "[Layout] Close sidenav"
+  WindowSize = "[Layout] Window resize",
+  OpenSidenav = "[Layout] Open sidenav",
+  CloseSidenav = "[Layout] Close sidenav"
 }
 
 export class WindowSize implements Action {
   constructor(public payload: number) {}
-  readonly type = LayoutActionTypes.windowSize;
+  readonly type = LayoutActionTypes.WindowSize;
 }
 
 export class OpenSidenav implements Action {
-  readonly type = LayoutActionTypes.openSidenav;
+  readonly type = LayoutActionTypes.OpenSidenav;
 }
 
 export class CloseSidenav implements Action {
-  readonly type = LayoutActionTypes.closeSidenav;
+  readonly type = LayoutActionTypes.CloseSidenav;
 }
 
 export type LayoutActions = WindowSize | OpenSidenav | CloseSidenav;
