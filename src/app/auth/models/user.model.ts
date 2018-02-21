@@ -5,7 +5,6 @@ export interface UserModel {
 export interface RegisterModel {
   email: string;
   password: string;
-  grapevine: string;
 }
 
 export interface AuthenticateModel {

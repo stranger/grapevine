@@ -28,7 +28,7 @@ export function reducer(state = initialState, action: AuthActions) {
       return {
         ...state,
         user: null,
-        loggedIn: true,
+        loggedIn: false,
         error: action.payload
       };
     }
