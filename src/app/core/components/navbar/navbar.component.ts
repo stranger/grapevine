@@ -1,9 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  Output,
+  EventEmitter
+} from "@angular/core";
 
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.scss"]
+  styleUrls: ["./navbar.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
   @Output() openSidenav: EventEmitter<any> = new EventEmitter();

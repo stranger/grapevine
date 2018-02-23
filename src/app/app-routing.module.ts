@@ -11,6 +11,11 @@ const routes: Routes = [
   {
     path: "create",
     loadChildren: "./auth/containers/register/register.module#RegisterModule"
+  },
+  {
+    path: "login",
+    loadChildren:
+      "./auth/containers/login-page/login-page.module#LoginPageModule"
   }
 ];
 @NgModule({

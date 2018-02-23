@@ -1,8 +1,11 @@
 import {
   Component,
+  ChangeDetectionStrategy,
   OnInit,
-  AfterViewInit,
+  OnChanges,
+  SimpleChanges,
   Output,
+  Input,
   EventEmitter
 } from "@angular/core";
 import {
@@ -13,12 +16,6 @@ import {
   FormControl
 } from "@angular/forms";
 
-import { Store, select } from "@ngrx/store";
-import * as fromAuth from "@auth/store/reducers";
-
-import { Observable } from "rxjs/Observable";
-import { Subscription } from "rxjs/Subscription";
-
 import { equalValidator, MyErrorStateMatcher } from "./validators";
 
 import { RegisterModel } from "../../models/user.model";
@@ -26,40 +23,24 @@ import { RegisterModel } from "../../models/user.model";
 @Component({
   selector: "app-register-form",
   templateUrl: "./register-form.component.html",
-  styleUrls: ["./register-form.component.scss"]
+  styleUrls: ["./register-form.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegisterFormComponent implements OnInit {
-  @Output() submitUser: EventEmitter<RegisterModel> = new EventEmitter();
+export class RegisterFormComponent implements OnInit, OnChanges {
+  @Output() user: EventEmitter<RegisterModel> = new EventEmitter();
+  @Input() errorMsg: { err: string };
 
   registerForm: FormGroup;
-  registerErrorMsg: string;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private fb: FormBuilder, private store: Store<fromAuth.State>) {
-    this.store.select(fromAuth.getRegisterPageError).subscribe(msg => {
-      if (this.registerForm) {
-        this.registerForm
-          .get("emailGroup.email")
-          .setErrors({ authError: true });
-      }
-      this.registerErrorMsg = msg;
-    });
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    // If you type after form has been submitted, reset error message and allow user to submit form again
-    const fireAuthValidator = (c: FormControl) => {
-      if (this.registerErrorMsg) {
-        this.registerErrorMsg = null;
-      }
-      return null;
-    };
-
     this.registerForm = this.fb.group(
       {
         emailGroup: this.fb.group(
           {
-            email: ["", [Validators.email, fireAuthValidator]],
+            email: ["", [Validators.email]],
             emailConfirm: ["", Validators.required]
           },
           { validator: equalValidator("email", "emailConfirm") }
@@ -76,9 +57,14 @@ export class RegisterFormComponent implements OnInit {
     );
   }
 
+  ngOnChanges(change: SimpleChanges) {
+    if (change.errorMsg) {
+      this.registerForm.get("emailGroup.email").setErrors({ authError: true });
+    }
+  }
+
   onSubmit() {
-    this.submitUser.emit({
-      grapevine: "wine",
+    this.user.emit({
       email: this.registerForm.get("emailGroup.email").value,
       password: this.registerForm.get("passwordGroup.password").value
     });

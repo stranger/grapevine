@@ -6,11 +6,6 @@ export { reducer, State } from "./layout.reducer";
 
 export const getLayoutState = createFeatureSelector<fromLayout.State>("layout");
 
-export const getWindowSize = createSelector(
-  getLayoutState,
-  fromLayout.getWindowSize
-);
-
 export const getShowSidenav = createSelector(
   getLayoutState,
   fromLayout.getShowSidenav

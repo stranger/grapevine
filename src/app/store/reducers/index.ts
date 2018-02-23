@@ -6,12 +6,15 @@ import {
   MetaReducer
 } from "@ngrx/store";
 
-import { environment } from "@env/environment";
 import * as fromRouter from "@ngrx/router-store";
+
 import { storeFreeze } from "ngrx-store-freeze";
+import { localStorageSync } from "ngrx-store-localstorage";
 
 import { RouterStateSerializer } from "@ngrx/router-store";
 import { RouterStateSnapshot, Params } from "@angular/router";
+
+import { environment } from "@env/environment";
 
 import * as fromLayout from "@core/store";
 
@@ -76,11 +79,22 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
   };
 }
 
+// Save state in session storage
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({
+    keys: [{ auth: ["status"] }],
+    rehydrate: true,
+    storage: sessionStorage
+  })(reducer);
+}
+
 /**
  * By default, @ngrx/store uses combineReducers with the reducer map to compose
  * the root meta-reducer. To add more meta-reducers, provide an array of meta-reducers
  * that will be composed to form the root meta-reducer.
  */
 export const metaReducers: Array<MetaReducer<State>> = !environment.production
-  ? [logger, storeFreeze]
+  ? [logger, localStorageSyncReducer, storeFreeze]
   : [];

@@ -13,7 +13,7 @@
       </mat-error>
 
       <mat-error *ngIf="registerForm.get('emailGroup.email').hasError('authError')">
-        {{ registerErrorMsg }}
+        {{ errorMsg.err }}
       </mat-error>
     </mat-form-field>
 
