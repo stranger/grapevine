@@ -5,8 +5,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "@shared/shared.module";
 import { MaterialModule } from "@material/material.module";
 
-import { RegisterPageComponent } from "./register-page.component";
-import { RegisterFormComponent } from "../../components";
+import { RegisterPageComponent } from "./register-page/register-page.component";
+import { RegisterFormComponent } from "../../components/register/register-form/register-form.component";
 
 const routes: Routes = [
   {

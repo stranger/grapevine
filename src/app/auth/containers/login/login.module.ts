@@ -5,8 +5,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "@shared/shared.module";
 import { MaterialModule } from "@material/material.module";
 
-import { LoginPageComponent } from "./login-page.component";
-import { LoginFormComponent } from "../../components";
+import { LoginPageComponent } from "./login-page/login-page.component";
+import { LoginFormComponent } from "../../components/login/login-form/login-form.component";
 
 export const routes: Routes = [
   {
@@ -24,4 +24,4 @@ export const routes: Routes = [
   ],
   declarations: [LoginPageComponent, LoginFormComponent]
 })
-export class LoginPageModule {}
+export class LoginModule {}

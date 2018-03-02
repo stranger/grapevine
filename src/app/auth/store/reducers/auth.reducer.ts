@@ -1,16 +1,19 @@
 import { AuthActions, AuthActionTypes } from "../actions";
-import { UserModel } from "../../models/user.model";
+import { UserModel, ErrorModel } from "../../models/user.model";
 
 export interface State {
   user: UserModel | null;
   loggedIn: boolean;
-  error: string;
+  error: ErrorModel;
 }
 
 export const initialState: State = {
   user: null,
   loggedIn: false,
-  error: null
+  error: {
+    code: null,
+    message: null
+  }
 };
 
 export function reducer(state = initialState, action: AuthActions) {
@@ -20,7 +23,10 @@ export function reducer(state = initialState, action: AuthActions) {
         ...state,
         user: action.payload,
         loggedIn: true,
-        error: null
+        error: {
+          code: null,
+          message: null
+        }
       };
     }
 

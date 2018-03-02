@@ -10,7 +10,8 @@ import { _throw } from "rxjs/observable/throw";
 import {
   RegisterModel,
   AuthenticateModel,
-  UserModel
+  UserModel,
+  ErrorModel
 } from "../models/user.model";
 
 @Injectable()
@@ -18,11 +19,16 @@ export class AuthService {
   constructor(private fireAuth: AngularFireAuth) {}
 
   logIn(user: AuthenticateModel) {
-    return this.fireAuth.auth.setPersistence("session").then(() => {
-      return this.fireAuth.auth
-        .signInWithEmailAndPassword(user.email, user.password)
-        .then(() => user.email)
-        .catch(err => err.message);
+    return new Promise((resolve, reject) => {
+      return this.fireAuth.auth.setPersistence("session").then(() => {
+        return this.fireAuth.auth
+          .signInWithEmailAndPassword(user.email, user.password)
+          .then(() => resolve(user.email))
+          .catch(err => {
+            const { code, message } = err;
+            return reject({ code, message });
+          });
+      });
     });
   }
 
@@ -33,7 +39,11 @@ export class AuthService {
         .then(() => {
           resolve({ email: user.email });
         })
-        .catch(err => reject(err.message))
+        .catch(err => {
+          console.log(err);
+          const { code, message } = err;
+          return reject({ code, message });
+        })
     );
   }
 }

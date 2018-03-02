@@ -13,7 +13,8 @@ import { AuthService } from "../../services/auth.service";
 import {
   RegisterModel,
   AuthenticateModel,
-  UserModel
+  UserModel,
+  ErrorModel
 } from "../../models/user.model";
 
 @Injectable()
@@ -27,7 +28,10 @@ export class AuthEffects {
     switchMap((auth: AuthenticateModel) =>
       fromPromise(this.authService.logIn(auth)).pipe(
         map((user: UserModel) => new fromAuth.LogInSuccess(user)),
-        catchError(err => of(new fromAuth.LogInFail(err)))
+        catchError(err => {
+          const { code, message } = err;
+          return of(new fromAuth.LogInFail({ code, message }));
+        })
       )
     )
   );

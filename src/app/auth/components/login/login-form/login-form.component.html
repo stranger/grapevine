@@ -2,13 +2,13 @@
   <mat-form-field color="accent">
     <input matInput placeholder="Email" formControlName="email">
 
-    <mat-error *ngIf="loginForm.get('email').hasError('required')">Email is required</mat-error>
+    <mat-error> {{ fireAuthError }} </mat-error>
   </mat-form-field>
 
   <mat-form-field color="accent">
     <input matInput placeholder="Password" formControlName="password">
 
-    <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required</mat-error>
+    <mat-error> {{ fireAuthError }} </mat-error>
   </mat-form-field>
 
   <button mat-raised-button type="submit" color="accent" [disabled]="!loginForm.valid" (click)="onSubmit()">Log in</button>

@@ -1,2 +1,2 @@
-export * from "./register-form/register-form.component";
-export * from "./login-form/login-form.component";
+export * from "./login/login-form/login-form.component";
+export * from "./register/register-form/register-form.component";

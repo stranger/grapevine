@@ -1,13 +1,16 @@
 import { AuthActions, AuthActionTypes } from "../actions";
-import { UserModel } from "../../models/user.model";
+import { UserModel, ErrorModel } from "../../models/user.model";
 
 export interface State {
-  error: string | null;
+  error: ErrorModel;
   pending: boolean;
 }
 
 export const initialState: State = {
-  error: null,
+  error: {
+    code: null,
+    message: null
+  },
   pending: false
 };
 
@@ -16,7 +19,6 @@ export function reducer(state = initialState, action: AuthActions) {
     case AuthActionTypes.SignUp: {
       return {
         ...state,
-        error: null,
         pending: true
       };
     }
@@ -24,7 +26,10 @@ export function reducer(state = initialState, action: AuthActions) {
     case AuthActionTypes.SignUpSuccess: {
       return {
         ...state,
-        error: null,
+        error: {
+          code: null,
+          message: null
+        },
         pending: false
       };
     }

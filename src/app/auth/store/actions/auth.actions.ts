@@ -2,7 +2,8 @@ import { Action } from "@ngrx/store";
 import {
   RegisterModel,
   AuthenticateModel,
-  UserModel
+  UserModel,
+  ErrorModel
 } from "../../models/user.model";
 
 export enum AuthActionTypes {
@@ -28,7 +29,7 @@ export class LogInSuccess implements Action {
 export class LogInFail implements Action {
   readonly type = AuthActionTypes.LogInFail;
 
-  constructor(public payload: string) {}
+  constructor(public payload: ErrorModel) {}
 }
 
 export class SignUp implements Action {
@@ -44,7 +45,7 @@ export class SignUpSuccess implements Action {
 export class SignUpFail implements Action {
   readonly type = AuthActionTypes.SignUpFail;
 
-  constructor(public payload: string) {}
+  constructor(public payload: ErrorModel) {}
 }
 
 export type AuthActions =

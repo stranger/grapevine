@@ -1,20 +1,16 @@
 import {
   Component,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   OnInit,
   AfterViewInit
 } from "@angular/core";
 
-import { AngularFireAuth } from "angularfire2/auth";
-
 import { Store } from "@ngrx/store";
+import * as fromAuth from "@auth/store/reducers";
+import * as fromAuthActions from "@auth/store/actions";
 
-import { Observable } from "rxjs/Observable";
-
-import * as fromAuth from "../../store/reducers";
-import * as fromAuthActions from "../../store/actions";
-
-import { RegisterModel } from "../../models/user.model";
+import { RegisterModel, ErrorModel } from "@auth/models/user.model";
 
 @Component({
   selector: "app-register",
@@ -22,16 +18,21 @@ import { RegisterModel } from "../../models/user.model";
   styleUrls: ["./register-page.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegisterPageComponent implements AfterViewInit, OnInit {
-  registerErrorMsg$: { err: string };
+export class RegisterPageComponent implements AfterViewInit {
+  public authError: ErrorModel;
+
   workplaceAdjective = "fun";
 
-  constructor(private store: Store<fromAuth.State>) {}
+  constructor(
+    private store: Store<fromAuth.State>,
+    private changeRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    this.store
-      .select(fromAuth.getRegisterPageError)
-      .subscribe(err => (this.registerErrorMsg$ = { err }));
+    this.store.select(fromAuth.getRegisterFormError).subscribe(error => {
+      this.authError = { ...error };
+      this.changeRef.detectChanges();
+    });
   }
 
   ngAfterViewInit() {
@@ -50,7 +51,7 @@ export class RegisterPageComponent implements AfterViewInit, OnInit {
     adjectiveLoop();
   }
 
-  formSubmit(user: RegisterModel) {
-    this.store.dispatch(new fromAuthActions.SignUp(user));
+  registerSubmit(data: RegisterModel) {
+    this.store.dispatch(new fromAuthActions.SignUp(data));
   }
 }

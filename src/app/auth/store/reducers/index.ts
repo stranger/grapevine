@@ -35,16 +35,16 @@ export const getLoggedIn = createSelector(
 );
 export const getError = createSelector(selectAuthStatus, fromAuth.getError);
 
-export const selectRegisterPageState = createSelector(
+export const selectRegisterState = createSelector(
   selectAuthState,
   (state: AuthState) => state.RegisterPage
 );
 
-export const getRegisterPageError = createSelector(
-  selectRegisterPageState,
+export const getRegisterFormError = createSelector(
+  selectRegisterState,
   fromRegister.getError
 );
-export const getRegisterPagePending = createSelector(
-  selectRegisterPageState,
+export const getRegisterFormPending = createSelector(
+  selectRegisterState,
   fromRegister.getPending
 );

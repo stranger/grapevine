@@ -1,4 +1,4 @@
 <h1 class="mat-display-1 title">Create your grapevine for free</h1>
 <h2 class="subtitle">Make your work environment feel {{ workplaceAdjective }}</h2>
 
-<app-register-form (user)="formSubmit($event)" [errorMsg]="registerErrorMsg$"></app-register-form>
+<app-register-form [authError]="authError" (registerSubmit)="registerSubmit($event)"></app-register-form>

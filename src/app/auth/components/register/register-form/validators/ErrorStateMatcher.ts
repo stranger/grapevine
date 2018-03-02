@@ -8,7 +8,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     form: FormGroupDirective | NgForm | null
   ): boolean {
     // If respective form group has noMatch error, display "noMatch" error.
-    // If confirm control has not been edited and normal control has been edited, display "required" error.
+    // Or If confirm control has not been edited and normal control has been edited, display "required" error.
     if (
       control.parent.hasError("noMatch") ||
       (!control.dirty && control.parent.dirty)
