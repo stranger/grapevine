@@ -18,12 +18,14 @@ import {
 export class AuthService {
   constructor(private fireAuth: AngularFireAuth) {}
 
-  logIn(user: AuthenticateModel) {
+  logIn(auth: AuthenticateModel) {
     return new Promise((resolve, reject) => {
       return this.fireAuth.auth.setPersistence("session").then(() => {
         return this.fireAuth.auth
-          .signInWithEmailAndPassword(user.email, user.password)
-          .then(() => resolve(user.email))
+          .signInWithEmailAndPassword(auth.email, auth.password)
+          .then((user: UserModel) =>
+            resolve({ email: user.email, uid: user.uid })
+          )
           .catch(err => {
             const { code, message } = err;
             return reject({ code, message });
@@ -32,15 +34,14 @@ export class AuthService {
     });
   }
 
-  signUp(user: RegisterModel): Promise<UserModel> {
+  signUp(auth: RegisterModel): Promise<UserModel> {
     return new Promise((resolve, reject) =>
       this.fireAuth.auth
-        .createUserWithEmailAndPassword(user.email, user.password)
-        .then(() => {
-          resolve({ email: user.email });
+        .createUserWithEmailAndPassword(auth.email, auth.password)
+        .then((user: UserModel) => {
+          resolve({ email: user.email, uid: user.uid });
         })
         .catch(err => {
-          console.log(err);
           const { code, message } = err;
           return reject({ code, message });
         })

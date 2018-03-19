@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { Effect, Actions, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 
 import { fromPromise } from "rxjs/observable/fromPromise";
 import { of } from "rxjs/observable/of";
-import { map, switchMap, mergeMap, catchError } from "rxjs/operators";
+import { tap, map, switchMap, mergeMap, catchError } from "rxjs/operators";
 
 import * as fromAuth from "../actions";
 import { AuthService } from "../../services/auth.service";
@@ -19,7 +20,7 @@ import {
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(private actions$: Actions, private router: Router, private authService: AuthService) {}
 
   @Effect()
   logIn$ = this.actions$.pipe(
@@ -35,6 +36,13 @@ export class AuthEffects {
       )
     )
   );
+
+  @Effect()
+  logInSuccess$ = this.actions$.pipe(
+    ofType(fromAuth.AuthActionTypes.LogInSuccess),
+    tap(() => this.router.navigate([''])),
+
+  )
 
   @Effect()
   register$ = this.actions$.pipe(

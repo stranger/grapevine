@@ -19,6 +19,10 @@ export function reducer(state = initialState, action: AuthActions) {
     case AuthActionTypes.SignUp: {
       return {
         ...state,
+        error: {
+          code: null,
+          message: null
+        },
         pending: true
       };
     }

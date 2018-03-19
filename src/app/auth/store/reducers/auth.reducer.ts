@@ -2,13 +2,16 @@ import { AuthActions, AuthActionTypes } from "../actions";
 import { UserModel, ErrorModel } from "../../models/user.model";
 
 export interface State {
-  user: UserModel | null;
+  user: UserModel;
   loggedIn: boolean;
   error: ErrorModel;
 }
 
 export const initialState: State = {
-  user: null,
+  user: {
+    email: null,
+    uid: null
+  },
   loggedIn: false,
   error: {
     code: null,
@@ -33,7 +36,10 @@ export function reducer(state = initialState, action: AuthActions) {
     case AuthActionTypes.LogInFail: {
       return {
         ...state,
-        user: null,
+        user: {
+          email: null,
+          uid: null
+        },
         loggedIn: false,
         error: action.payload
       };
